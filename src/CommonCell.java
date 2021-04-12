@@ -1,7 +1,13 @@
+import utils.configUtil;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class CommonCell implements Cell{
+    private static final int battleProb;
+    static {
+        battleProb = configUtil.getConfigInt("fightProb");
+    }
 
     private int[] pos = new int[2];
     public CommonCell(int row, int col) {
@@ -11,7 +17,7 @@ public class CommonCell implements Cell{
 
     public void enter(Team<Hero> heroes){
         heroes.setPos(new int[]{pos[0],pos[1]});
-        if (rollDice() == 0){
+        if (rollDice() < battleProb){
             new Battle(heroes);
         }else{
             System.out.println("A Safe Cell.");
@@ -110,7 +116,7 @@ public class CommonCell implements Cell{
      */
     private int rollDice(){
         Random rnd = new Random();
-        return rnd.nextInt(2);
+        return rnd.nextInt(100);
     }
 
     public int[] getPos() {

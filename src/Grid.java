@@ -1,12 +1,18 @@
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import utils.configUtil;
 
 public class Grid {
     private final Cell[][] gridArea;
     private int size;
-    private static final double marketPct = 0.3;
-    private static final double inaccessPct = 0.2;
+    private static final double marketPct;
+    private static final double inaccessiblePct;
+    static {
+        marketPct = configUtil.getConfigInt("marketPct")/100.0;
+        inaccessiblePct = configUtil.getConfigInt("inaccessiblePct")/100.0;
+    }
+
     Grid(){
         System.out.println("Initializing grid......");
         size = pickSize();
@@ -16,17 +22,20 @@ public class Grid {
 
     private int pickSize(){
         int size;
+        int gridDefault = configUtil.getConfigInt("gridDefault");
+        int gridLower = configUtil.getConfigInt("gridLower");
+        int gridUpper = configUtil.getConfigInt("gridUpper");
         try {
-            System.out.println("Please enter the size of playing area[8-30]");
+            System.out.printf("Please enter the size of playing area[%d-%d]\n", gridLower, gridUpper);
             Scanner scanner = new Scanner(System.in);
             size = scanner.nextInt();
-            if (size < 8 || size > 30){
-                System.out.println("Out of Boundary. Choose 8 automatically.\n");
-                size = 8;
+            if (size < gridLower|| size > gridUpper){
+                System.out.printf("Out of Boundary. Choose %d automatically.\n\n", gridDefault);
+                size = gridDefault;
             }
         }catch (InputMismatchException e){
-            System.out.println("Input Mismatch. Choose 8 automatically.\n");
-            size = 8;
+            System.out.printf("Input Mismatch. Choose %d automatically.\n\n", gridDefault);
+            size = gridDefault;
         }
         return size;
     }
@@ -35,7 +44,7 @@ public class Grid {
         int total = size * size;
         gridArea[0][0] = new MarketCell(0, 0);
         Random rnd = new Random(10);
-        for (int i = 0; i < total * inaccessPct; i++) {
+        for (int i = 0; i < total * inaccessiblePct; i++) {
             int row, col;
             int rndNum = rnd.nextInt(total);
             row = rndNum / size;
