@@ -9,7 +9,7 @@ public class CommonCell implements Cell{
         pos[1] = col;
     }
 
-    public void enter(Team heroes){
+    public void enter(Team<Hero> heroes){
         heroes.setPos(new int[]{pos[0],pos[1]});
         if (rollDice() == 0){
             new Battle(heroes);
@@ -40,8 +40,8 @@ public class CommonCell implements Cell{
                         boolean hasEquip = false;
                         int id = 0;
                         for (int i = 0; i < heroes.getTeamSize(); i++) {
-                            if (heroes.getHero(i).getBag().hasItem("Armor")){
-                                System.out.println(i+": "+heroes.getHero(i).getName());
+                            if (heroes.getMember(i).getBag().hasItem("Armor")){
+                                System.out.println(i+": "+heroes.getMember(i).getName());
                                 id = id * 10 + i;
                                 hasEquip = true;
                             }
@@ -60,7 +60,7 @@ public class CommonCell implements Cell{
                                     break;
                                 }
                                 heroId = Integer.parseInt(get);
-                                heroes.getHero(heroId).attack(null, 4);
+                                heroes.getMember(heroId).attack(null, 4);
                             } catch (NumberFormatException e) {
                                 System.out.println("Please enter correct number.");
                             }
@@ -71,8 +71,8 @@ public class CommonCell implements Cell{
                         boolean hasEquip = false;
                         int id = 0;
                         for (int i = 0; i < heroes.getTeamSize(); i++) {
-                            if (heroes.getHero(i).getBag().hasItem("Weapon")){
-                                System.out.println(i+": "+heroes.getHero(i).getName());
+                            if (heroes.getMember(i).getBag().hasItem("Weapon")){
+                                System.out.println(i+": "+heroes.getMember(i).getName());
                                 id = id * 10 + i;
                                 hasEquip = true;
                             }
@@ -90,7 +90,7 @@ public class CommonCell implements Cell{
                                 break;
                             }
                             heroId = Integer.parseInt(get);
-                            heroes.getHero(heroId).attack(null, 5);
+                            heroes.getMember(heroId).attack(null, 5);
                         } catch (NumberFormatException e) {
                             System.out.println("Please enter correct number");
                         }

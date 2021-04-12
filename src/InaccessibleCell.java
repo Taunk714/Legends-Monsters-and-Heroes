@@ -8,7 +8,7 @@ public class InaccessibleCell implements Cell{
     }
 
     @Override
-    public void enter(Team heroes) {
+    public void enter(Team<Hero> heroes) {
         System.out.println("You can't go here. It's inaccessible.");
     }
 

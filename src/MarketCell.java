@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -73,7 +72,7 @@ public class MarketCell implements Cell{
         pos[1] = col;
     }
 
-    public void enter(Team heroes){
+    public void enter(Team<Hero> heroes){
         heroes.setPos(new int[]{pos[0], pos[1]});
         System.out.println("""
                 Welcome to the SUPER LEGEND MARKET!
@@ -96,13 +95,13 @@ public class MarketCell implements Cell{
                 case 1->{ // buy
                     System.out.println("Who want to buy items?");
                     for (int i = 0; i < heroes.getTeamSize(); i++) {
-                        System.out.println(i+": "+heroes.getHero(i).getName());
+                        System.out.println(i+": "+heroes.getMember(i).getName());
                     }
 
                     while (true){
                         try {
                             Scanner scanner1 = new Scanner(System.in);
-                            buy(heroes.getHero(scanner1.nextInt()));
+                            buy(heroes.getMember(scanner1.nextInt()));
                             break;
                         }catch (InputMismatchException e){
                             System.out.println("Incorrect format! You should enter a number. Please enter 0 to " + (heroes.getTeamSize()-1));
@@ -115,9 +114,9 @@ public class MarketCell implements Cell{
                     System.out.println("Who want to sell items?");
                     boolean hasItem = false;
                     for (int i = 0; i < heroes.getTeamSize(); i++) {
-                        if (heroes.getHero(i).getBag().getUsed() > 0){
-                            System.out.println(i+": " + heroes.getHero(i).getName());
-                            heroes.getHero(i).showBag();
+                        if (heroes.getMember(i).getBag().getUsed() > 0){
+                            System.out.println(i+": " + heroes.getMember(i).getName());
+                            heroes.getMember(i).showBag();
                             System.out.println("\n");
                             hasItem = true;
                         }
@@ -131,7 +130,7 @@ public class MarketCell implements Cell{
                     while (true) {
                         try {
                             Scanner scanner1 = new Scanner(System.in);
-                            sell(heroes.getHero(scanner1.nextInt()));
+                            sell(heroes.getMember(scanner1.nextInt()));
                             break;
                         } catch (InputMismatchException e) {
                             System.out.println("Incorrect format! You should enter a number. Please enter 1 to " + heroes.getTeamSize());

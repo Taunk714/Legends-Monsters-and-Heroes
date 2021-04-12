@@ -6,7 +6,7 @@ import java.util.Scanner;
 // Battle class will create the same number and level monsters as the heroes.
 public class Battle {
     private Monster[] monsters;
-    private Team heroes;
+    private Team<Hero> heroes;
     private int round = 0;
     public Battle(Team heroes){
         this.heroes = heroes;
@@ -18,7 +18,7 @@ public class Battle {
     private void initMonster(){
         monsters = new Monster[heroes.getTeamSize()];
         for (int i = 0; i < monsters.length; i++) {
-            monsters[i] = MonsterCreator.createHeroByLevel(heroes.getHero(i).getLevel());
+            monsters[i] = MonsterCreator.createHeroByLevel(heroes.getMember(i).getLevel());
         }
     }
 
@@ -60,7 +60,7 @@ public class Battle {
                 if (monster.getHP() > 0){
                     while (true){
                         int index = rnd.nextInt(heroes.getTeamSize());
-                        Hero target = heroes.getHero(index);
+                        Hero target = heroes.getMember(index);
                         if (target.getHP() > 0){
                             monster.attack(target);
                             break;
@@ -235,7 +235,7 @@ public class Battle {
         System.out.printf(s.toString(),"Occupation", "Name","Lv","HP"," Mana", "Weapon","Armor");
         System.out.println(sLine);
         for (int i = 0; i < heroes.getTeamSize(); i++) {
-            Hero target = heroes.getHero(i);
+            Hero target = heroes.getMember(i);
             if (target.getHP()<=0){
                 System.out.print(MyFont.ANSI_GREY);
             }

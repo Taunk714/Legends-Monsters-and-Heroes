@@ -79,4 +79,14 @@ public class Monster extends Character {
     public String toString() {
         return MyFont.ANSI_PURPLE + type + " " + getName() + MyFont.ANSI_RESET;
     }
+
+    @Override
+    public void revive(boolean b) {
+
+    }
+
+    @Override
+    public void gainAndLevelUp(int exp, int money) {
+
+    }
 }

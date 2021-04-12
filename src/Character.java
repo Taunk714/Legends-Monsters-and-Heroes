@@ -28,4 +28,7 @@ public abstract class Character {
         this.HP = HP;
     }
 
+    public abstract void revive(boolean b);
+
+    public abstract void gainAndLevelUp(int exp, int money);
 }

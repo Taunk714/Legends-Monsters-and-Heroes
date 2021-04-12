@@ -1,6 +1,3 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -18,7 +15,7 @@ public class Legends implements Game{
     private HeroCreator heroCreator = HeroCreator.getInstance();
 
     private Grid grid;
-    private Team heroes;
+    private Team<Hero> heroes;
     private HashSet<Integer> heroIds = new HashSet<>();
     private int isDead = 0;
 
@@ -31,7 +28,7 @@ public class Legends implements Game{
             System.out.print("\n");
             System.out.printf("Choose Hero %d\n",i);
             Hero target = initHero(chooseOccupation(i));
-            heroes.setHeroes(i, target);
+            heroes.setMember(i, target);
             System.out.printf("%s joins the team!\n", target.toString());
         }
     }
@@ -245,7 +242,7 @@ public class Legends implements Game{
         System.out.printf(s.toString(), "Hero Name","Lv","HP"," Mana", "EXP","Money", "Strength", "Agility", "Dexterity");
         System.out.println(sLine);
         for (int i = 0; i < heroes.getTeamSize(); i++) {
-            Hero target = heroes.getHero(i);
+            Hero target = heroes.getMember(i);
             System.out.printf(s.toString(), target.getName(), target.getLevel(),
                     target.getHP(), target.getMana(),target.getExp(), target.getMoney(),
                     target.getStrength(),target.getAgility(),target.getDexterity());
@@ -280,7 +277,7 @@ public class Legends implements Game{
         MyFont.showDEAD();
         Thread.sleep(1000);
         for (int i = 0; i < heroes.getTeamSize(); i++) {
-            heroes.getHero(i).printHeroDeadInfo();
+            heroes.getMember(i).printHeroDeadInfo();
         }
         System.out.println("All the heroes died.......");
         Thread.sleep(500);
