@@ -49,10 +49,3 @@ play StartGame.main()
 # Via command line
 - javac StartGame.java
 - java StartGame
-
-## PS.
-I use strikeout at many places, but it's not supported on some terminal. It's supported on ItelliJ.
-
-It is easy to add new types of hero or monster, we only need to add info in the two Creator class. 
-It's also easy to add new types of items. Legends is singleton, so it's easy to show info at any moment without store Legends instance in every object.
-HeroCreator is also singleton so that even in the future we want to add function like create a new team or a new team member, every hero is unit.
