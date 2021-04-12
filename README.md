@@ -49,6 +49,7 @@ play StartGame.main()
 # Via command line
 - javac StartGame.java
 - java StartGame
+<<<<<<< HEAD
 
 ## PS.
 
