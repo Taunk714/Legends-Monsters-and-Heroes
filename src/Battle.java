@@ -19,7 +19,7 @@ public class Battle {
     private void initMonster(){
         monsters = new Monster[heroes.getTeamSize()];
         for (int i = 0; i < monsters.length; i++) {
-            monsters[i] = MonsterCreator.createHeroByLevel(heroes.getMember(i).getLevel());
+            monsters[i] = MonsterCreator.createMonsterByLevel(heroes.getMember(i).getLevel());
         }
     }
 

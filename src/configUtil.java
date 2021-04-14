@@ -6,11 +6,9 @@ import java.util.Properties;
 
 
 public class configUtil {
-    private static Map<String,String> configMap;
     private static Properties properties;
 
     static{
-        configMap = new HashMap<>();
         readConfig();
     }
 
@@ -30,6 +28,10 @@ public class configUtil {
      */
     public static String getConfig(String key, String defaultValue){
         return properties.getProperty(key)== null ? defaultValue: properties.getProperty(key);
+    }
+
+    public static String getConfig(String key){
+        return properties.getProperty(key);
     }
 
     /**

@@ -16,13 +16,13 @@ public class Hero extends Character implements Fight{
     private String type;
 
     Hero(String[] heroData, String type){
-        setName(heroData[0]);
-        mana = maxMana = Integer.parseInt(heroData[1]);
-        strength = new Skill("strength", Integer.parseInt(heroData[2]));
-        agility = new Skill("agility", Integer.parseInt(heroData[3]));
-        dexterity = new Skill("dexterity", Integer.parseInt(heroData[4]));
-        money = Integer.parseInt(heroData[5]);
-        exp = Integer.parseInt(heroData[6]);
+        setName(heroData[1]);
+        mana = maxMana = Integer.parseInt(heroData[2]);
+        strength = new Skill("strength", Integer.parseInt(heroData[3]));
+        agility = new Skill("agility", Integer.parseInt(heroData[4]));
+        dexterity = new Skill("dexterity", Integer.parseInt(heroData[5]));
+        money = Integer.parseInt(heroData[6]);
+        exp = Integer.parseInt(heroData[7]);
         this.type = type;
         setLevel(1);
         maxHP = getLevel() * 100;

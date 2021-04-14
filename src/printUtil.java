@@ -181,7 +181,7 @@ public class printUtil {
             String[] target = info[i];
             input[0] = (start+i)+"";
             if (isLive >= 0 && Integer.parseInt(target[isLive]) <= 0){
-                System.out.print(MyFont.ANSI_DELETE);
+                System.out.print(MyFont.ANSI_DELETE+MyFont.ANSI_GREY);
             }
             System.arraycopy(target, 0, input, 1, input.length - 1);
             System.out.printf(s.toString(),input);

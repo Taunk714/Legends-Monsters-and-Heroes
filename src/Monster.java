@@ -13,8 +13,9 @@ public class Monster extends Character implements Fight{
 
     public Monster(String[] monsterData) {
         //Name/level/damage/defense/dodge chance
-        setName(monsterData[0]);
-        type = monsterData[1];
+
+        type = monsterData[0];
+        setName(monsterData[1]);
         setLevel(Integer.parseInt(monsterData[2]));
         damage = Integer.parseInt(monsterData[3]);
         defense = Integer.parseInt(monsterData[4]);
@@ -32,6 +33,10 @@ public class Monster extends Character implements Fight{
 
     public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getDodgeChance() {
