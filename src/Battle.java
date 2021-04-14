@@ -33,7 +33,7 @@ public class Battle {
             for (Hero hero: heroes){
                 if (hero.getHP()>0){
                     System.out.printf("%s's turn:\n", hero.toString());
-                    hero.recover();
+
                     int ans = howToAttack(hero);
                     if (ans == 1 || ans == 2){
                         showMonsterInfo();
@@ -44,6 +44,7 @@ public class Battle {
                     }else{
                         hero.attack(null, ans);
                     }
+                    hero.recover();
                 }else {
                     System.out.printf("%s is faint...Skip...", hero.toString());
                     continue;
@@ -220,34 +221,7 @@ public class Battle {
         // and armors
         // print Hero Info
         printUtil.printObjectInfoTableWithId("Heroes", heroes.getMembers(),
-                0, "Occupation", "Name","Lv","HP"," Mana", "Weapon","Armor");
-
-
-//        StringBuilder s = new StringBuilder();
-//        StringBuilder sLine = new StringBuilder();
-//        int[] tableSize = new int[]{10, Legends.getHeroNameLen(), 3, 5, 6, 16, 17}; // name level hp mana weapon armor
-//        s.append("|%") ;
-//        sLine.append("+");
-//        for (int j : tableSize) {
-//            s.append(j).append("s|%");
-//            sLine.append("-".repeat(j)).append("+");
-//        }
-//        s.deleteCharAt(s.length()-1);
-//        s.append("\n");
-//        System.out.println(MyFont.ANSI_BACKGROUNDWHITE +MyFont.ANSI_BOLD+" ".repeat((sLine.length()-9)/2)+
-//                "HERO INFO"+ " ".repeat(sLine.length()-9 - (sLine.length()-9)/2) + MyFont.ANSI_RESET);
-//        System.out.println(sLine.toString());
-//        System.out.printf(s.toString(),"Occupation", "Name","Lv","HP"," Mana", "Weapon","Armor");
-//        System.out.println(sLine);
-//        for (int i = 0; i < heroes.getTeamSize(); i++) {
-//            Hero target = heroes.getMember(i);
-//            if (target.getHP()<=0){
-//                System.out.print(MyFont.ANSI_GREY);
-//            }
-//            System.out.printf(s.toString(), target.getType(), target.getName(), target.getLevel(),
-//                    target.getHP(), target.getMana(),target.showWeapon(), target.showArmorWorn());
-//        }
-//        System.out.println(sLine.toString());
+                0, "Occupation", "Name","Lv","HP","Mana", "Weapon","Armor");
 
     }
 
@@ -256,33 +230,6 @@ public class Battle {
         // print Monster Info
         printUtil.printObjectInfoTableWithId("Monsters", Arrays.asList(monsters),
                 0, "Type",  "Name","Lv","HP","Defense", "Damage");
-//
-//        StringBuilder s = new StringBuilder();
-//        StringBuilder sLine = new StringBuilder();
-//        int[] tableSize = new int[]{3, 12 ,Legends.getMonsterNameLen(), 3, 5, 8, 8}; // name level hp defense damage
-//        s.append("|%") ;
-//        sLine.append("+");
-//        for (int j : tableSize) {
-//            s.append(j).append("s|%");
-//            sLine.append("-".repeat(j)).append("+");
-//        }
-//        s.deleteCharAt(s.length()-1);
-//        s.append("\n");
-//        System.out.println(MyFont.ANSI_BACKGROUNDWHITE +MyFont.ANSI_BOLD+" ".repeat((sLine.length()-12)/2)+
-//                "MONSTER INFO"+ " ".repeat(sLine.length()-12 - (sLine.length()-12)/2) + MyFont.ANSI_RESET);
-//        System.out.println(sLine.toString());
-//        System.out.printf(s.toString(), "ID","Type", "Name","Lv","HP"," Defense", "Damage");
-//        for (int i = 0; i < monsters.length;i++) {
-//            Monster monster = monsters[i];
-//            System.out.println(sLine);
-//            if (monster.getHP() <= 0){
-//                System.out.print(MyFont.ANSI_DELETE + MyFont.ANSI_GREY);
-//            }
-//            System.out.printf(s.toString(),i, monster.getType(),monster.getName(), monster.getLevel(),
-//                    monster.getHP(), monster.getDefense(), monster.getDamage());
-//            System.out.print(MyFont.ANSI_RESET);
-//        }
-//        System.out.println(sLine.toString());
     }
 
     // settlement after heroes win

@@ -62,7 +62,8 @@ public class Hero extends Character implements Fight{
                 System.out.println("Please enter 0 to "+ (size - 1)+":");
             }
         }
-        bag.useItem(type,id);
+        Item item = bag.takeItem(type,id);
+        item.use();
     }
 
     // ask and get an attacking item of a specific type to attack a specific monster.
@@ -91,12 +92,11 @@ public class Hero extends Character implements Fight{
                 System.out.println("Please enter 0 to "+ (size - 1)+":");
             }
         }
-        Item item = bag.getItem(type,id);
-        if (item.getType().contains("Spell")){
+        Item item = bag.takeItem(type,id);
+        if (item instanceof Spell){
             ((Spell)item).setTarget(monster);
         }
-
-        bag.useItem("Spell",id);
+        item.use();
     }
 
     // buy item. called by market cell.
@@ -146,6 +146,7 @@ public class Hero extends Character implements Fight{
     public void recover(){
         setHP(getHP() + maxHP/10);
         setMana(mana + maxMana/10);
+        System.out.printf("%s's HP&Mana recover. HP: %d, Mana: %d", toString(),getHP(), getMana());
     }
 
     @Override
@@ -166,7 +167,8 @@ public class Hero extends Character implements Fight{
             this.exp = this.exp - calStdExp(getLevel());
             levelUp();
         }
-        System.out.printf("Now %s is Lv.%d and has $%d\n", toString(), getLevel(), this.money);
+        System.out.printf("Now %s is Lv.%d and has $%d. Current HP: %d, Mana: %d, EXP: %d/%d\n",
+                toString(), getLevel(), this.money, getHP(), getMana(), getExp(), calStdExp(getLevel()));
     }
 
     // all attributes level up

@@ -42,19 +42,20 @@ public class Bag {
         return volume - used;
     }
 
-    public void useItem(String type, int index){
+    public Item takeItem(String type, int index){
         Item item = getItem(type, index);
-        item.use();
+//        item.use();
         removeItem(item);
         used--;
+        return item;
     }
 
-    public void useItem(int index){
-        Item item = getItem(index);
-        item.use();
-        removeItem(item);
-        used--;
-    }
+//    public void takeItem(int index){
+//        Item item = getItem(index);
+//        item.use();
+//        removeItem(item);
+//        used--;
+//    }
 
     public void addItem(Item item){
         used++;

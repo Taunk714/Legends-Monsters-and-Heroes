@@ -239,7 +239,7 @@ public class Legends implements RpgGame{
         System.out.println(MyFont.ANSI_BACKGROUNDWHITE+" ".repeat((sLine.length()-it.length())/2)+
                 it+ " ".repeat(sLine.length()-it.length() - (sLine.length()-it.length())/2) + MyFont.ANSI_RESET);
         System.out.println(sLine.toString());
-        System.out.printf(s.toString(), "Hero Name","Lv","HP"," Mana", "EXP","Money", "Strength", "Agility", "Dexterity");
+        System.out.printf(s.toString(), "Hero Name","Lv","HP","Mana", "EXP","Money", "Strength", "Agility", "Dexterity");
         System.out.println(sLine);
         for (int i = 0; i < heroes.getTeamSize(); i++) {
             Hero target = heroes.getMember(i);

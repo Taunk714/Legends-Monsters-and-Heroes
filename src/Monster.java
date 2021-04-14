@@ -106,7 +106,7 @@ public class Monster extends Character implements Fight{
     @Override
     public String[] getAttrString() {
 
-        //"Type", "Name","Lv","HP"," Defense", "Damage"
+        //"Type", "Name","Lv","HP","Defense", "Damage"
         return new String[]{getType(), getName(),
                 String.valueOf(getLevel()), String.valueOf(getHP()),
                 String.valueOf(getDefense()), String.valueOf(getDamage())};
